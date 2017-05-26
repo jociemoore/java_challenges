@@ -1,3 +1,5 @@
+// Outputs all possible consecutive series of length n in a given string of digits
+
 package com.challenges;
 
 import java.util.Arrays;
