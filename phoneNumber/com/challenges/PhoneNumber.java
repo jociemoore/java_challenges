@@ -11,12 +11,12 @@ class PhoneNumber {
 
     @Override
     public String toString() {
-        return "(" + area_code() + ") " +
+        return "(" + areaCode() + ") " +
                 number().substring(3, 6) + "-" +
                 number().substring(6, 10);
     }
 
-    String area_code() {
+    String areaCode() {
         return number().substring(0, 3);
     }
 
@@ -45,7 +45,7 @@ class PhoneNumber {
 
     private Boolean invalid_number() {
         return mCleanNumber.length() < 10 ||
-                mCleanNumber.length() == 10 && mUnformattedNumber.matches("[A-Za-z]+") ||
+                mCleanNumber.length() == 10 && mUnformattedNumber.matches(".+[A-Za-z].+") ||
                 mCleanNumber.length() == 11 && !mCleanNumber.startsWith("1") ||
                 mCleanNumber.length() > 11;
     }
