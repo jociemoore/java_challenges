@@ -1,4 +1,4 @@
-package com.challenges;
+package challenge;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -7,17 +7,14 @@ public class PhoneNumberTest {
 
     @Test
     public void shouldReturnACleanNumber() throws Exception {
-        PhoneNumber phoneNumber1 = new PhoneNumber("(123) 456-7890");
-        PhoneNumber phoneNumber2 = new PhoneNumber("(987) 654-3210");
+        PhoneNumber phoneNumber = new PhoneNumber("(123) 456-7890");
 
-        String cleanNumber1 = phoneNumber1.number();
-        String cleanNumber2 = phoneNumber2.number();
+        String cleanNumber = phoneNumber.number();
 
-        assertEquals("Number1", "1234567890", cleanNumber1);
-        assertEquals("Number2", "9876543210", cleanNumber2);
+        assertEquals("Number", "1234567890", cleanNumber);
     }
 
-    @Test
+    @org.testng.annotations.Test
     public void shouldCleanNumberWithDots() throws Exception {
         PhoneNumber phoneNumber = new PhoneNumber("456.123.7890");
 
@@ -44,7 +41,7 @@ public class PhoneNumberTest {
         assertEquals("0000000000", zerosNumber);
     }
 
-    @Test
+    @org.junit.Test
     public void shouldReturnCleanNumberForInputOfElevenDigitsStartingWithOne() throws Exception {
         PhoneNumber phoneNumber = new PhoneNumber("19876543210");
 
@@ -91,14 +88,11 @@ public class PhoneNumberTest {
 
     @Test
     public void shouldReturnAreaCode() throws Exception {
-        PhoneNumber phoneNumber1 = new PhoneNumber("1234567890");
-        PhoneNumber phoneNumber2 = new PhoneNumber("9876543210");
+        PhoneNumber phoneNumber = new PhoneNumber("1234567890");
 
-        String areaCode1 = phoneNumber1.areaCode();
-        String areaCode2 = phoneNumber2.areaCode();
+        String areaCode = phoneNumber.areaCode();
 
-        assertEquals("123", areaCode1);
-        assertEquals("987", areaCode2);
+        assertEquals("123", areaCode);
     }
 
     @Test

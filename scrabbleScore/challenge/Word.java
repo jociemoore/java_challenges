@@ -1,13 +1,15 @@
-package com.challenges;
+// Computes the scrabble score for a given word
+
+package challenge;
 
 import java.util.*;
 
 public class Word {
-    private static String mWord;
+    private static String Word;
     private static Map<List<Character>, Integer> POINTS_PER_LETTER = new HashMap<>();
 
     public Word(String wordString) {
-        mWord = wordString;
+        this.Word = wordString;
         POINTS_PER_LETTER.put(Arrays.asList('A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'), 1);
         POINTS_PER_LETTER.put(Arrays.asList('D','G'), 2);
         POINTS_PER_LETTER.put(Arrays.asList('B', 'C', 'M', 'P'), 3);
@@ -19,14 +21,14 @@ public class Word {
 
     @Override
     public String toString() {
-        return mWord;
+        return this.Word;
     }
 
-    public static int score() {
+    public int score() {
         int totalWordPoints = 0;
         try {
-            if (mWord.matches("\\w[A-Za-z]+")) {
-                char[] characters = mWord.toUpperCase().toCharArray();
+            if (this.Word.matches("[A-Za-z]+")) {
+                char[] characters = this.Word.toUpperCase().toCharArray();
                 for (char character : characters) {
                     for (Map.Entry<List<Character>, Integer> entry : POINTS_PER_LETTER.entrySet()) {
                         if (entry.getKey().contains(character)) {
@@ -35,7 +37,10 @@ public class Word {
                     }
                 }
             }
-        } catch (NullPointerException npe){}
+        } catch (NullPointerException npe){
+            System.out.println("No word to score.");
+            return totalWordPoints;
+        }
         return totalWordPoints;
     }
 }
